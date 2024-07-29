@@ -1,0 +1,34 @@
+import { query } from "@/lib/db";
+import { RowDataPacket } from "mysql2";
+import { getServerSession } from "next-auth";
+import { NextRequest, NextResponse } from "next/server";
+import { authOptions } from "../auth/[...nextauth]/authOptions";
+
+export async function POST(req: NextRequest, res: NextResponse) {
+	try {
+		const { user_id } = await req.json();
+
+		console.log(user_id);
+
+		const queryString = `SELECT * FROM catched_pokemons WHERE user_id = ?`;
+
+		const res = await query("pokemon", queryString, [user_id]);
+
+		return new NextResponse(
+			JSON.stringify({
+				success: true,
+				data: res,
+				message: "Catched pokemons retrieved successfully",
+			}),
+			{
+				status: 200,
+				headers: { "Content-Type": "application/json" },
+			}
+		);
+	} catch (error: any) {
+		return new NextResponse(JSON.stringify({ message: error.message }), {
+			status: 500,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
+}
