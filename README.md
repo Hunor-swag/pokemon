@@ -5,7 +5,7 @@ Amit tudni kell, hogy a xampp-ot használtam ahhoz, hogy egy lokális MySQL adat
 
 Továbbá a .env fájl tartalma:
   API_URL=http://localhost:3000/api
-  NEXTAUTH_SECRET=nextauth-NEXTAUTH_SECRET
+  NEXTAUTH_SECRET=nextauth-secret
   NEXTAUTH_URL=http://localhost:3000/
 
 Köszönöm!
