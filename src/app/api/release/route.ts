@@ -3,15 +3,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
 	try {
-		const { poke_name, user_id } = await req.json();
+		const { poke_name, user_id } = await req.json(); // retrieve the data from the request body
 
-		console.log(poke_name, user_id);
+		const queryString = `DELETE FROM catched_pokemons WHERE user_id = ? AND poke_name = ?`; // query to delete the pokemon assigned to the user
 
-		const queryString = `DELETE FROM catched_pokemons WHERE user_id = ? AND poke_name = ?`;
+		await query("pokemon", queryString, [user_id, poke_name]); // run the query
 
-		await query("pokemon", queryString, [user_id, poke_name]);
-
-		return new NextResponse(
+		return new NextResponse( // return the response to the client
 			JSON.stringify({ message: "Pokemon added successfully" }),
 			{
 				status: 200,

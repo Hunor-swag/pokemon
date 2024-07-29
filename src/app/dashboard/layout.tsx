@@ -8,6 +8,8 @@ import { signOut } from "next-auth/react";
 import Header from "@/components/header";
 import { fetchAllPokemon } from "@/lib/fetchPokemon";
 
+// this is the dashboard layout file that will be used to wrap the dashboard pages
+
 export default async function DashboardLayout({
 	children,
 }: {

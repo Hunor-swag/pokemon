@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// this is a really basic homepage, from which the user can navigate to the login or register page
+
 export default function Home() {
 	return (
 		<main className='flex flex-col justify-center items-center mt-60'>

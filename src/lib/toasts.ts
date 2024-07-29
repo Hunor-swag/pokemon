@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 
+// function to display toast messages
+
 export function displayToast(type: string, message: string, duration?: number) {
 	switch (type) {
 		case "success":

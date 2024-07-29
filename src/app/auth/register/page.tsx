@@ -13,13 +13,14 @@ export default function Register() {
 		handleSubmit,
 		formState: { errors },
 		reset,
-	} = useForm();
+	} = useForm(); // initialize the react-hook-form
 
-	const router = useRouter();
+	const router = useRouter(); // router for navigation
 
-	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false); // state to check if the form is already submitting
 
 	async function onSubmit(formdata: any) {
+		// function to handle the form submission
 		if (isSubmitting) {
 			return;
 		}
@@ -27,8 +28,10 @@ export default function Register() {
 		setIsSubmitting(true);
 
 		const res = await fetch(`/api/auth/register`, {
+			// call the register API endpoint
 			method: "POST",
 			body: JSON.stringify({
+				// pass the necessary data in the request body
 				email: formdata.email,
 				password: formdata.password,
 				repeat_password: formdata.repeat_password,
@@ -44,9 +47,9 @@ export default function Register() {
 
 		if (res.status === 200) reset();
 
-		displayToastAfterFetch(res, data);
+		displayToastAfterFetch(res, data); // display the result in a toast
 		setIsSubmitting(false);
-		router.push("/auth/login");
+		router.push("/auth/login"); // redirect to the login page after successful registration
 	}
 
 	return (

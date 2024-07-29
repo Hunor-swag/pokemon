@@ -9,6 +9,8 @@ import PokemonSearch from "./PokemonSearch";
 import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 import { getServerSession } from "next-auth";
 
+// this is the main page in the dashboard, that consists of the pokemon search and the pokemon type selector
+
 export default async function Dashboard() {
 	const session = await getServerSession(authOptions);
 

@@ -1,5 +1,7 @@
 import { PokemonListResponse } from "@/types/typings";
 
+// these are 3 functions that will fetch the pokemon list, the pokemon types and the catched pokemon
+
 export const fetchAllPokemon = async () => {
 	let url = "https://pokeapi.co/api/v2/pokemon?limit=10000";
 

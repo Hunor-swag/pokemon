@@ -8,6 +8,8 @@ type Props = {
 	className?: string;
 };
 
+// this is the button component that will be used throughout the application
+
 export default function Button({
 	children,
 	type,

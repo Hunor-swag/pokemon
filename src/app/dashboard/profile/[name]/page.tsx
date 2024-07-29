@@ -13,13 +13,15 @@ export default async function ProfilePage({
 }: {
 	params: { name: string };
 }) {
+	// fetch the pokemon data from the pokeapi. This is done by the server, since its a server component
+
 	const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`);
 
 	const pokemon = await res.json();
 
-	const session = await getServerSession(authOptions);
+	const session = await getServerSession(authOptions); // get the user session
 
-	const catchedPokemon = await fetchCatchedPokemon(session.user.id);
+	const catchedPokemon = await fetchCatchedPokemon(session.user.id); // fetch the pokemon that the user has catched
 
 	return (
 		<div className='p-4'>
@@ -30,6 +32,7 @@ export default async function ProfilePage({
 				<Link href='/dashboard'>Back</Link>
 			</div>
 			<div className='flex space-x-4'>
+				{/* display the image */}
 				<img src={`https://img.pokemondb.net/artwork/${pokemon.name}.jpg`} />
 				<div>
 					<ul className='text-lg'>
@@ -37,7 +40,7 @@ export default async function ProfilePage({
 						<li>Weight: {pokemon.weight}</li>
 						<li>Height: {pokemon.height}</li>
 						<li>
-							Abilities:{" "}
+							Abilities: {/* Display only the abilities that aren't hidden */}
 							{pokemon.abilities.map((abil: any) => {
 								return (
 									!abil.is_hidden && (

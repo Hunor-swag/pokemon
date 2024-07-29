@@ -1,5 +1,7 @@
 import { createConnection, Connection } from "mysql2/promise";
 
+// Function to query the database
+
 export const query = async (dbname: string, query: string, values: any[]) => {
 	try {
 		const connection: Connection = await createConnection({

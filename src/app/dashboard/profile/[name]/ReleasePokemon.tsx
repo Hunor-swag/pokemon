@@ -13,6 +13,7 @@ export default function ReleasePokemon(pokemon: any) {
 
 	const router = useRouter();
 
+	// the releasePokemon function will be called once the red button is clicked. It will send a POST request to the /api/release endpoint to remove the proper record from the database
 	const releasePokemon = () => {
 		const releaseIt = async () => {
 			if (!session) {

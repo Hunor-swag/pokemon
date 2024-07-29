@@ -3,6 +3,8 @@
 import { Span } from "next/dist/trace";
 import React from "react";
 
+// this is the text input component that will be used in the authentication pages
+
 type Props = {
 	label?: string;
 	placeholder?: string;

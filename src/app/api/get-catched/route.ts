@@ -6,15 +6,13 @@ import { authOptions } from "../auth/[...nextauth]/authOptions";
 
 export async function POST(req: NextRequest, res: NextResponse) {
 	try {
-		const { user_id } = await req.json();
+		const { user_id } = await req.json(); // retrieve user_id from the request body
 
-		console.log(user_id);
+		const queryString = `SELECT * FROM catched_pokemons WHERE user_id = ?`; // query to fetch the catched pokemons
 
-		const queryString = `SELECT * FROM catched_pokemons WHERE user_id = ?`;
+		const res = await query("pokemon", queryString, [user_id]); // run the query
 
-		const res = await query("pokemon", queryString, [user_id]);
-
-		return new NextResponse(
+		return new NextResponse( // return the response to the client
 			JSON.stringify({
 				success: true,
 				data: res,
